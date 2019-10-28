@@ -1,6 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import GiphyItem from './GiphyItem';
 
+const chunkArray = (myArray, chunk_size) => {
+	let results = [];
+
+	while (myArray.length) {
+		results.push(myArray.splice(0, chunk_size));
+	}
+
+	return results;
+};
+
+const renderImages = results => {
+	const sections = chunkArray(results, 7);
+	return (
+		<>
+			<div className="col s4">
+				{sections[0].map(result => (
+					<GiphyItem key={result.id} url={result.url} />
+				))}
+			</div>
+			<div className="col s4">
+				{sections[1].map(result => (
+					<GiphyItem key={result.id} url={result.url} />
+				))}
+			</div>
+			<div className="col s4">
+				{sections[2].map(result => (
+					<GiphyItem key={result.id} url={result.url} />
+				))}
+			</div>
+		</>
+	);
+};
+
 const GiphyContainer = props => {
 	const [results, setResults] = useState([]);
 	const { searchTerm } = props;
@@ -10,7 +43,7 @@ const GiphyContainer = props => {
 			const giphyApiKey = process.env.REACT_APP_GIPHY_API_KEY;
 			try {
 				const res = await fetch(
-					`http://api.giphy.com/v1/gifs/search?api_key=${giphyApiKey}&q=${searchTerm}&limit=20&rating=G`
+					`http://api.giphy.com/v1/gifs/search?api_key=${giphyApiKey}&q=${searchTerm}&limit=21&rating=G`
 				);
 				const json = await res.json();
 				console.log({ json });
@@ -31,11 +64,7 @@ const GiphyContainer = props => {
 
 	return (
 		<div className="row">
-			{results.length > 0
-				? results.map(result => (
-						<GiphyItem key={result.id} url={result.url} />
-				  ))
-				: 'Enter a search term'}
+			{results.length > 0 ? renderImages(results) : 'Enter a search term'}
 		</div>
 	);
 };

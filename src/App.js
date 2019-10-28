@@ -5,16 +5,16 @@ import Navbar from './components/layout/Searchbar';
 import GiphyContainer from './components/giphy/GiphyContainer';
 
 function App() {
-  const [query, setQuery] = useState('');
-  const [search, setSearch] = useState('');
+	const [query, setQuery] = useState('');
+	const [search, setSearch] = useState('');
 
 	const onChange = e => {
 		setQuery(e.target.value);
 	};
 
 	const onSubmit = async e => {
-    e.preventDefault();
-    setSearch(query);
+		e.preventDefault();
+		setSearch(query);
 	};
 
 	return (
