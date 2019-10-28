@@ -1,32 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Navbar = () => {
-    const [search, setSearch] = useState('');
-
-
-	const onChange = e => {
-		setSearch(e.target.value);
-	};
-
-	const onSubmit = async e => {
-        e.preventDefault();
-        const giphyApiKey = process.env.REACT_APP_GIPHY_API_KEY;
-        const res = await fetch(`http://api.giphy.com/v1/gifs/search?api_key=${giphyApiKey}&q=${search}&limit=20&rating=G`);
-        const data = await res.json();
-        console.log(data.data[0].url);
-	};
-
+const Navbar = props => {
 	return (
 		<nav>
 			<div className="nav-wrapper">
-				<form onSubmit={onSubmit}>
+				<form onSubmit={props.onSubmit}>
 					<div className="input-field">
 						<input
 							id="search"
 							type="search"
 							placeholder="Enter your search term..."
 							required
-							onChange={onChange}
+							onChange={props.onChange}
 						/>
 						<label className="label-icon" htmlFor="search">
 							<i className="material-icons">search</i>
