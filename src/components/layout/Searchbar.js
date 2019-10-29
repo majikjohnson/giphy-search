@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Navbar = props => {
+const Searchbar = props => {
 	return (
-		<nav>
-			<div className="nav-wrapper">
+		<div className="container">
+			<div className="row">
 				<form onSubmit={props.onSubmit}>
-					<div className="input-field">
+					<div className="input-field col s12">
+					<i className="material-icons prefix">search</i>
 						<input
 							id="search"
 							type="search"
@@ -14,14 +15,14 @@ const Navbar = props => {
 							onChange={props.onChange}
 						/>
 						<label className="label-icon" htmlFor="search">
-							<i className="material-icons">search</i>
+							
 						</label>
 						<i className="material-icons">close</i>
 					</div>
 				</form>
 			</div>
-		</nav>
+		</div>
 	);
 };
 
-export default Navbar;
+export default Searchbar;

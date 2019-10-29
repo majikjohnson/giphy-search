@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
-import Navbar from './components/layout/Searchbar';
+import Navbar from './components/layout/Navbar';
+import Searchbar from './components/layout/Searchbar';
 import GiphyContainer from './components/giphy/GiphyContainer';
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
 
 	return (
 		<div className="App">
-			<Navbar onChange={onChange} onSubmit={onSubmit} />
+			<Navbar />
+			<Searchbar onChange={onChange} onSubmit={onSubmit} />
 			<GiphyContainer searchTerm={search} />
 		</div>
 	);
