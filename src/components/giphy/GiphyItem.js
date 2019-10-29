@@ -14,7 +14,7 @@ const GiphyItem = ({ url, title, preview }) => {
 				>
 					<source src={preview} type="video/mp4" />
 				</video>
-                <h5><span className="card-title white-text">{title}</span></h5>
+                <h6><span className="card-title white-text">{title}</span></h6>
                 </div>
 			</div>
 		</div>
