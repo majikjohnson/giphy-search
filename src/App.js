@@ -1,31 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import Navbar from './components/layout/Navbar';
-import Searchbar from './components/layout/Searchbar';
-import GiphyContainer from './components/giphy/GiphyContainer';
+import Home from './components/pages/Home';
+import Search from './components/pages/Search';
+import SearchState from './context/SearchState';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
-	const [query, setQuery] = useState('');
-	const [search, setSearch] = useState('');
-
-	const onChange = e => {
-		setQuery(e.target.value);
-	};
-
-	const onSubmit = async e => {
-		e.preventDefault();
-		setSearch(query);
-	};
-
 	return (
-		<div className="App">
-			<Navbar />
-			<div className="container">
-				<Searchbar onChange={onChange} onSubmit={onSubmit} />
-				<GiphyContainer searchTerm={search} />
-			</div>
-		</div>
+		<SearchState>
+			<Router>
+				<div className="App">
+					<Navbar />
+					<div className="container">
+						<Switch>
+							<Route exact path="/" component={Home} />
+							<Route exact path="/search" component={Search} />
+						</Switch>
+					</div>
+				</div>
+			</Router>
+		</SearchState>
 	);
 }
 
