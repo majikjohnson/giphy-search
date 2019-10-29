@@ -6,7 +6,7 @@ const Searchbar = props => {
 			<div className="row">
 				<form onSubmit={props.onSubmit}>
 					<div className="input-field col s12">
-					<i className="material-icons prefix">search</i>
+						<i className="material-icons prefix">search</i>
 						<input
 							id="search"
 							type="search"
