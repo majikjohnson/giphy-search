@@ -21,8 +21,10 @@ function App() {
 	return (
 		<div className="App">
 			<Navbar />
-			<Searchbar onChange={onChange} onSubmit={onSubmit} />
-			<GiphyContainer searchTerm={search} />
+			<div className="container">
+				<Searchbar onChange={onChange} onSubmit={onSubmit} />
+				<GiphyContainer searchTerm={search} />
+			</div>
 		</div>
 	);
 }

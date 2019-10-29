@@ -14,9 +14,7 @@ const Searchbar = props => {
 							required
 							onChange={props.onChange}
 						/>
-						<label className="label-icon" htmlFor="search">
-							
-						</label>
+						<label className="label-icon" htmlFor="search" />
 						<i className="material-icons">close</i>
 					</div>
 				</form>

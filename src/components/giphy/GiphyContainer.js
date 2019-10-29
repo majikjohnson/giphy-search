@@ -17,17 +17,17 @@ const renderImages = results => {
 		<>
 			<div className="col s4">
 				{sections[0].map(result => (
-					<GiphyItem key={result.id} url={result.url} />
+					<GiphyItem key={result.id} url={result.url} title={result.title} preview={result.preview} />
 				))}
 			</div>
 			<div className="col s4">
 				{sections[1].map(result => (
-					<GiphyItem key={result.id} url={result.url} />
+					<GiphyItem key={result.id} url={result.url} title={result.title} preview={result.preview} />
 				))}
 			</div>
 			<div className="col s4">
 				{sections[2].map(result => (
-					<GiphyItem key={result.id} url={result.url} />
+					<GiphyItem key={result.id} url={result.url} title={result.title} preview={result.preview} />
 				))}
 			</div>
 		</>
@@ -50,8 +50,10 @@ const GiphyContainer = props => {
 				setResults(
 					json.data.map(item => {
 						return {
-							id: item.id,
-							url: item.images.preview.mp4,
+                            id: item.id,
+                            url: item.url,
+                            title: item.title,
+							preview: item.images.preview.mp4,
 						};
 					})
 				);
