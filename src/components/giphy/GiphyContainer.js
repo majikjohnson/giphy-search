@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import GiphyItem from './GiphyItem';
+import Spinner from '../layout/Spinner';
 import SearchContext from '../../context/SearchContext';
 
 // chunkArray will split the given array into the given number of chunks
@@ -41,12 +42,12 @@ const renderImages = results => {
 
 const GiphyContainer = () => {
 	const searchContext = useContext(SearchContext);
-	const { giphys } = searchContext;
+	const { giphys, loading } = searchContext;
 	console.log(searchContext);
 
 	return (
 		<div className="row">
-			{giphys.length > 0 ? renderImages(giphys) : 'Enter a search term'}
+			{loading ? <Spinner /> : renderImages(giphys)}
 		</div>
 	);
 };
