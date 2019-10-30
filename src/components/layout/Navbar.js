@@ -24,6 +24,7 @@ const Navbar = () => {
 						<ul className="right hide-on-med-and-down">
 							<li><Link to="/">Home</Link></li>
 							<li><Link to="/about">About</Link></li>
+							<li><a href="https://www.testingninja.com">Testing Ninja</a></li>
 						</ul>
 					</div>
 				</div>
@@ -32,6 +33,11 @@ const Navbar = () => {
 			<ul className="sidenav blue-grey darken-4" id="mobile-menu">
 				<li><Link className="white-text" to="/">Home</Link></li>
 				<li><Link className="white-text" to="/about">About</Link></li>
+				<li>
+					<a className="white-text" href="https://www.testingninja.com">
+						Testing Ninja
+					</a>
+				</li>
 			</ul>
 		</Fragment>
 	);
