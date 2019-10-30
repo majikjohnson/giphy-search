@@ -31,8 +31,8 @@ const Navbar = () => {
 			</nav>
 
 			<ul className="sidenav blue-grey darken-4" id="mobile-menu">
-				<li><Link className="white-text" to="/">Home</Link></li>
-				<li><Link className="white-text" to="/about">About</Link></li>
+				<li><Link className="white-text sidenav-close" to="/">Home</Link></li>
+				<li><Link className="white-text sidenav-close" to="/about">About</Link></li>
 				<li>
 					<a className="white-text" href="https://www.testingninja.com">
 						Testing Ninja
