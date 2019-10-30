@@ -24,7 +24,7 @@ const renderImages = results => {
 		<>
 			{columns.map((row, index) => {
 				return (
-					<div key={index} className="col s4">
+					<div key={index} className="col s12 m6 l4">
 						{row.map(result => (
 							<GiphyItem
 								key={result.id}
@@ -42,12 +42,20 @@ const renderImages = results => {
 
 const GiphyContainer = () => {
 	const searchContext = useContext(SearchContext);
-	const { giphys, loading } = searchContext;
-	console.log(searchContext);
+	const { giphys, loading, error } = searchContext;
+	//console.log(searchContext);
 
 	return (
 		<div className="row">
-			{loading ? <Spinner /> : renderImages(giphys)}
+			{loading ? (
+				<Spinner />
+			) : error ? (
+				<h5 className="center-align red-text">
+					Unable to get Giphys. Please try again.
+				</h5>
+			) : (
+				renderImages(giphys)
+			)}
 		</div>
 	);
 };

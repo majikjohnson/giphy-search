@@ -12,6 +12,7 @@ const Searchbar = () => {
 	const onSubmit = async e => {
 		e.preventDefault();
 		searchContext.getGiphys(query);
+		searchContext.allowRedirect(true);
 	};
 
 	return (

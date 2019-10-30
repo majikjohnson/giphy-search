@@ -5,6 +5,7 @@ export default () => (
 	<Fragment>
 		<img
 			src={giphy}
+			width="100%"
 			alt=""
 		/>
 	</Fragment>

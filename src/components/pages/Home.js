@@ -5,10 +5,10 @@ import SearchContext from '../../context/SearchContext';
 
 const Home = ({ history }) => {
 	const searchContext = useContext(SearchContext);
-	const { searchTerm } = searchContext;
+	const { redirect } = searchContext;
 
 	useEffect(() => {
-		if (searchTerm !== '') {
+		if (redirect) {
 			history.push('/Search');
 		}
 	});
