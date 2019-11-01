@@ -15,10 +15,11 @@ const SearchState = props => {
 		setError(false);
 		try {
 			const res = await fetch(
-				`http://api.giphy.com/v1/gifs/search?api_key=${giphyApiKey}&q=${text}&limit=21&rating=G`
+				`http://api.giphy.com/v1/gifs/search?api_key=${giphyApiKey}&q=${text}&limit=42&rating=G`
 			);
+			//console.log(res);
 			const json = await res.json();
-			//console.log({ json });
+			//console.log(json);
 			setGiphys(
 				json.data.map(item => {
 					return {

@@ -31,5 +31,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/user-event": "^7.1.2",
+    "fetch-mock": "^8.0.0-alpha.11",
+    "jest-fetch-mock": "^2.1.2"
   }
 }

@@ -18,11 +18,12 @@ const Searchbar = () => {
 	return (
 		<div className="container">
 			<div className="row">
-				<form onSubmit={onSubmit}>
-					<div className="input-field col s12">
+				<form onSubmit={onSubmit} data-testid="search-form">
+					<div className="input-field col s8">
 						<i className="material-icons prefix">search</i>
 						<input
 							id="search"
+							value={query}
 							type="search"
 							placeholder="Enter your search term..."
 							required
@@ -30,6 +31,15 @@ const Searchbar = () => {
 						/>
 						<label className="label-icon" htmlFor="search" />
 						<i className="material-icons">close</i>
+					</div>
+					<div className="input-field col s4">
+						<button
+							className="btn waves-effect waves-light blue-grey darken-1"
+							type="submit"
+							name="submit"
+						>
+							Search
+						</button>
 					</div>
 				</form>
 			</div>
