@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 import GiphyContainer from './GiphyContainer';
 import Searchbar from './Searchbar';
 import SearchState from '../../context/SearchState';
-//import fetchMock from 'fetch-mock';
 
 const responseData = {
 	data: [
@@ -24,46 +23,32 @@ const responseData = {
 
 describe('GiphyContainer Component', () => {
 	beforeEach(() => {
-		//fetch.resetMocks();
-		//fetchMock.reset();
+		fetch.resetMocks();
 	});
-	it('displays Giphy results', async () => {
+
+	it('displays single Giphy results', async () => {
 		//Arrange
-		 /* fetch.mockResponse(
-			JSON.stringify({
-                "data": [{
-                  "id": "gw3IWyGkC0rsazTi",
-                  "url": "https://giphy.com/gifs/test-gw3IWyGkC0rsazTi",
-                  "title": "test GIF",
-                  "images": {
-                    "preview": {
-                      "mp4": "https://media2.giphy.com/media/gw3IWyGkC0rsazTi/giphy-preview.mp4"
-                    }
-                  }
-                }]
-              })
-        ); */
+		fetch.mockResponse(JSON.stringify(responseData));
 
-		//fetchMock.get(
-	//		'begin:http://api.giphy.com/v1/gifs/search',
-	//		responseData
-	//	);
-
-		const { getByPlaceholderText, getByText, getByTestId } = render(
+		const { getByPlaceholderText, getByText } = render(
 			<SearchState>
 				<Searchbar />
 				<GiphyContainer />
 			</SearchState>
 		);
-		const searchInput = getByPlaceholderText('Enter your search term...');
 
 		//Act
-		//act(() => {
-		userEvent.type(searchInput, 'test');
+		await userEvent.type(getByPlaceholderText('Enter your search term...'), 'test');
 		userEvent.click(getByText('Search'));
-		//});
 
-		await waitForElement(() => getByTestId('spinner'));
+		//Assert
 		await waitForElement(() => getByText('test GIF'));
 	});
+
+	it.skip('displays two Giphy results', async () => {});
+	it.skip('displays three Giphy results', async () => {});
+	it.skip('displays 21 Giphy results', async () => {});
+	it.skip('displays an error if Giphy API is unreachable', async () => {});
+	it.skip('displays a message if no search results are found', async () => {});
+	it.skip('displays a spinner while the Giphys are being retrieved', async () => {});
 });

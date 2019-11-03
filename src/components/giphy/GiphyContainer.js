@@ -8,6 +8,10 @@ import SearchContext from '../../context/SearchContext';
 const chunkArray = (orginalArray, chunkSize) => {
 	let chunkedArrays = [];
 
+	if(chunkSize < 1) {
+		chunkSize = 1;
+	}
+
 	while (orginalArray.length) {
 		chunkedArrays.push(orginalArray.splice(0, chunkSize));
 	}
