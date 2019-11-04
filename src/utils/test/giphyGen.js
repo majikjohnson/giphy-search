@@ -2,9 +2,7 @@ const getGiphyData = (quantity = 1) => {
 	let giphys = [];
 
 	for (let i = 0; i < quantity; i++) {
-		const id = Math.random()
-			.toString(36)
-			.substr(2);
+		const id = Math.random().toString(36).substr(2);
 		giphys[i] = {
 			id: id,
 			url: `https://giphy.com/gifs/test-${id}`,

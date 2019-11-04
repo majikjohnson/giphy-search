@@ -48,7 +48,7 @@ const GiphyContainer = () => {
 	const searchContext = useContext(SearchContext);
 	const { giphys, loading, error } = searchContext;
 	//console.log(searchContext);
-
+	
 	return (
 		<div className="row">
 			{loading ? (
@@ -56,6 +56,10 @@ const GiphyContainer = () => {
 			) : error ? (
 				<h5 className="center-align red-text">
 					Unable to get Giphys. Please try again.
+				</h5>
+			) : giphys.length === 0 ? (
+				<h5 className="center-align">
+					There are no Giphys for your search term.
 				</h5>
 			) : (
 				renderImages(giphys)
