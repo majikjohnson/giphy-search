@@ -2,7 +2,7 @@ import React from 'react';
 
 const GiphyItem = ({ title, preview, url }) => {
 	return (
-		<div className="col s12">
+		<div className="col s12" data-testid="giphy-card">
 			<div className="card-panel blue-grey darken-3">
 				<div className="card-image">
 					<video
