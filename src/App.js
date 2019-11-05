@@ -5,13 +5,11 @@ import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Search from './components/pages/Search';
 import About from './components/pages/About';
-import SearchState from './context/SearchState';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
 	return (
-		<SearchState>
-			<Router>
+		
 				<div className="App">
 					<Navbar />
 					<div className="container">
@@ -22,8 +20,7 @@ function App() {
 						</Switch>
 					</div>
 				</div>
-			</Router>
-		</SearchState>
+			
 	);
 }
 
