@@ -50,7 +50,7 @@ const GiphyContainer = () => {
 	//console.log(searchContext);
 	
 	return (
-		<div className="row">
+		<div className="row" data-testid="giphy-container">
 			{loading ? (
 				<Spinner />
 			) : error ? (
