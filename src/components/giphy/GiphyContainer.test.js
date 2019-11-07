@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElement } from '@testing-library/react';
+import { render, waitForElement, waitForDomChange } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import GiphyContainer from './GiphyContainer';
 import Searchbar from './Searchbar';
@@ -129,7 +129,7 @@ describe('GiphyContainer Component', () => {
 		//Arrange
 		fetch.mockReject(new Error('fake error message'));
 
-		const { getByPlaceholderText, getByText, findByText } = render(
+		const { getByPlaceholderText, getByText, getByTestId } = render(
 			<SearchState>
 				<Searchbar />
 				<GiphyContainer />
@@ -143,8 +143,10 @@ describe('GiphyContainer Component', () => {
 		);
 		userEvent.click(getByText('Search'));
 
+		await waitForDomChange(() => getByTestId('giphy-container'));
+
 		//Assert
-		await findByText('Unable to get Giphys. Please try again.');
+		expect(getByText('Unable to get Giphys. Please try again.')).toBeInTheDocument();
 	});
 
 	it('displays a message if no search results are found', async () => {
@@ -152,7 +154,7 @@ describe('GiphyContainer Component', () => {
 		const giphyData = getGiphyData(0);
 		fetch.mockResponse(JSON.stringify(giphyData));
 
-		const { getByPlaceholderText, getByText, findByText } = render(
+		const { getByPlaceholderText, getByText, getByTestId } = render(
 			<SearchState>
 				<Searchbar />
 				<GiphyContainer />
@@ -166,8 +168,10 @@ describe('GiphyContainer Component', () => {
 		);
 		userEvent.click(getByText('Search'));
 
+		await waitForDomChange(() => getByTestId('giphy-container'));
+
 		//Assert
-		await findByText('There are no Giphys for your search term.');
+		expect(getByText('There are no Giphys for your search term.')).toBeInTheDocument();
 	});
 
 	it('displays a spinner while the Giphys are being retrieved', async () => {
@@ -196,6 +200,7 @@ describe('GiphyContainer Component', () => {
 		await waitForElement(() => getByTestId('spinner'));
 		//check that the giphy eventually loads
 		await waitForElement(() => getByTestId('giphy-card'));
+		expect(getByText('Test GIF 1')).toBeInTheDocument();
 
 		expect(console.error.mock.calls.length).toBe(1); //check that console error is only called the expect number of times
 	});
