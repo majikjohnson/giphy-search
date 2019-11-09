@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- 12
+script:
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: lvxdrbXF3rUNckU4jAsl/P57nILq+t8jmcETu5Ik22gisyb9obr1n8bafPF7mEJ4QsgEOUSsg4/a+vclAlygcXHDxiT6gPEHpCbRaE0BE1Gs+gjXcI3a2Q3/k1u8M3DaP7zGijPW5FFvL7ql+hH7iC8O1m1biTQsuiyWkAcumcbaHq2xo7Di7OKqeeYwfVdoAJzndE0ehSyLZCPdoeLjQ0/RfxpXlNUkl8uGJ44S0SoW/e8mMs+xhmgCvDw/vJTvw8aP92IrsiOANY6fjF7xTvO9nshgeHe9PCsXoAELk/lnHVhm8nltYyiMq0+4yFIl+yPJ5Yxd3Nv8IlBYJBKi+kk17U8B45yd+smL4e5zG90HuYr4n6FO6JoXIFht4Us5C0shrJ6V81P819k/D4r773mqX7AH+M54rWlU77kaUPLq/YmTK2hw7b5aNFsLXcxxxsMxlpWy5FKvR+nGxiC1Hq9BzA+H/T2vQiVEYem8A10YKFIRFdEGDX1WKrvFmMedt0MrccX2ldLSoG0WeQ8zyS2H90+okNMxIdDTa8TWOY7Lw2PvMcLs+5J4zehccC5A/PArn2sAr5pm2MspIA+bm3/R5a0dCqZNgFP5ObOgj0dCLYaav+OKfy7SIooQK280tHv8ozHivOpseMthBxk4dNuF/lrV3cA9bkRUyL/I85I=
+  app: enigmatic-plains-01773
